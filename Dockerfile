@@ -13,9 +13,10 @@ rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-RUN curl https://packages.microsoft.com/config/rhel/7/prod.repo -so /etc/yum.repos.d/mssql-release.repo && \
+RUN curl https://packages.microsoft.com/config/rhel/7/mssql-server-preview.repo -so /etc/yum.repos.d/mssql-server.repo && \
+curl https://packages.microsoft.com/config/rhel/7/prod.repo -so /etc/yum.repos.d/mssql-release.repo && \
 yum update -y && \
-ACCEPT_EULA=Y yum install -y mssql-tools unixODBC-devel && \
+ACCEPT_EULA=Y yum install -y mssql-server unixODBC-devel && \
 yum clean all
 
 RUN  ln -s /opt/mssql-tools/bin/sqlcmd /usr/local/sbin/sqlcmd && \
