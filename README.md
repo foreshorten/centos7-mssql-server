@@ -1,3 +1,6 @@
+
+#DRAFT  --- Dockerfile edit in progress
+
 # centos7-mssql-server
 CentOS7 Mssql Server
 
